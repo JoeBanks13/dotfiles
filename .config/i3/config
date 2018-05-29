@@ -1,0 +1,138 @@
+set $mod Mod4
+font pango:monospace 8
+
+client.focused          #333333 #333333 #f6f3e8 #444444
+client.focused_inactive #000000 #000000 #f6f3e8 #444444
+client.unfocused        #000000 #000000 #f6f3e8 #444444
+client.urgent           #e5786d #e5786d #f6f3e8 #444444
+
+
+# i 3
+# g a p s
+# :sparkles:
+gaps inner 7
+gaps outer 1
+
+client.background #ffffff
+floating_modifier $mod
+bindsym $mod+Shift+q kill
+
+bindsym $mod+d exec "rofi -lines 12 -padding 18 -width 60 -location 0 -show drun -sidebar-mode -columns 3 -font 'Noto Sans 8'"
+
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+bindsym $mod+Shift+j move left
+bindsym $mod+Shift+k move down
+bindsym $mod+Shift+l move up
+bindsym $mod+Shift+semicolon move right
+
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+bindsym $mod+h split h
+
+bindsym $mod+v split v
+
+bindsym $mod+f fullscreen toggle
+
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+bindsym $mod+Shift+space floating toggle
+
+bindsym $mod+space focus mode_toggle
+
+bindsym $mod+a focus parent
+
+# weird bug with compton was making my screenshots be bad
+# exec --no-startup-id compton --paint-on-overlay
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+0 move container to workspace 10
+
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+r restart
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+mode "resize" {
+        bindsym j resize shrink width 10 px or 10 ppt
+        bindsym k resize grow height 10 px or 10 ppt
+        bindsym l resize shrink height 10 px or 10 ppt
+        bindsym semicolon resize grow width 10 px or 10 ppt
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+bindsym $mod+n exec i3-input -F 'rename workspace to "%s"' -P 'New name for this workspace: '
+
+# Alternate scrolling direction
+exec --no-startup-id synclient NaturalScrolling=1 VertScrollDelta=-113
+
+# Terminal 
+bindsym $mod+Return exec termite
+exec < ~/mouse_fix.sh
+new_window none
+
+# Set desktop background
+exec_always --no-startup-id /usr/bin/feh --bg-scale '/home/joseph/Pictures/firewatch.jpg'
+
+# Brightness keys
+bindsym XF86MonBrightnessUp exec xbacklight -inc 10 # increase screen brightness
+bindsym XF86MonBrightnessDown exec xbacklight -dec 10 # decrease screen brightness
+
+# Volume keys
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume alsa_output.pci-0000_00_1b.0.analog-stereo +5% #increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume alsa_output.pci-0000_00_1b.0.analog-stereo -5% #decrease sound volume
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute alsa_output.pci-0000_00_1b.0.analog-stereo toggle # mute sound
+
+# Media keys
+bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
+bindsym XF86AudioNext exec --no-startup-id playerctl next
+bindsym XF86AudioPrev exec --no-startup-id playerctl previous
+
+bindsym Print exec scrot -q 100 -e 'mv $f /tmp/'
+bindsym $mod+Print exec --no-startup-id cd /tmp && scrot -u -q 100
+bindsym Ctrl+$mod+P exec --no-startup-id ~/screen.sh
+
+bindsym $mod+Shift+w exec xkill
+
+# Lemonbar
+exec --no-startup-id /home/joseph/bar/target/debug/bar
+
+# Notification server
+exec_always /usr/lib/xfce4/notifyd/xfce4-notifyd
+
+# Lock screen 
+bindsym $mod+l exec --no-startup-id sh ~/.config/i3lock/lock.sh
+
+# vim:filetype=i3
