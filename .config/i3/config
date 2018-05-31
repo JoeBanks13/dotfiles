@@ -98,7 +98,7 @@ bindsym $mod+n exec i3-input -F 'rename workspace to "%s"' -P 'New name for this
 # Alternate scrolling direction
 exec --no-startup-id synclient NaturalScrolling=1 VertScrollDelta=-113
 
-# Terminal 
+# Terminal
 bindsym $mod+Return exec termite
 exec < ~/mouse_fix.sh
 new_window none
@@ -127,12 +127,11 @@ bindsym Ctrl+$mod+P exec --no-startup-id ~/screen.sh
 bindsym $mod+Shift+w exec xkill
 
 # Lemonbar
-exec --no-startup-id /home/joseph/bar/target/debug/bar
+exec --no-startup-id /home/joseph/bar/target/release/bar
 
 # Notification server
-exec_always /usr/lib/xfce4/notifyd/xfce4-notifyd
-
-# Lock screen 
+exec_always dunst
+# Lock screen
 bindsym $mod+l exec --no-startup-id sh ~/.config/i3lock/lock.sh
 
 # vim:filetype=i3
