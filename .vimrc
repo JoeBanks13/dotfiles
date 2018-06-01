@@ -19,8 +19,6 @@ Plug 'majutsushi/tagbar'
 Plug 'racer-rust/vim-racer', { 'for': 'rust' }
 Plug 'junegunn/vim-github-dashboard', { 'on': ['GHA!', 'GHD!']}
 Plug 'joshdick/onedark.vim'
-Plug 'zchee/deoplete-jedi', { 'for': 'python' }
-Plug 'fszymanski/deoplete-emoji', { 'for': 'markdown' }
 Plug 'neomake/neomake'
 Plug 'sheerun/vim-polyglot'
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
@@ -30,7 +28,8 @@ Plug 'HerringtonDarkholme/yats.vim', { 'for': 'typescript' }
 Plug 'mhartington/nvim-typescript', { 'for': 'typescript' }
 Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': 'NERDTreeToggle' }
 Plug 'mhinz/vim-startify'
-Plug 'Shougo/deoplete.nvim'
+Plug 'Valloric/YouCompleteMe'
+
 " All of your Plugins must be added before the following line
 call plug#end()            " required
 filetype plugin indent on    " required
@@ -130,6 +129,7 @@ call neomake#configure#automake('w')
 let g:neomake_open_list = 2
 let g:neomake_python_enabled_makers = ['flake8']
 let g:neomake_javascript_enabled_makers = ['eslint']
+let g:neomake_rust_enabled_makers = ["rustc"]
 
 set tabstop=4
 set shiftwidth=4
@@ -143,6 +143,8 @@ vmap <C-x> "+c
 vmap <C-v> c<ESC>"+p
 imap <C-v> <ESC>"+pa
 
-let g:deoplete#enable_at_startup = 1
+let g:ycm_server_python_interpreter = "/usr/bin/python2"
+let g:ycm_python_binary_path = '/usr/bin/python3.6'
+
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 autocmd vimenter * wincmd l
