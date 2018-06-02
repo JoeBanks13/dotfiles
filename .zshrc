@@ -8,13 +8,6 @@ prompt_spotify_segment(){
     $1_prompt_segment "$0" "$2" "035" "white" "$content" "#"
 }
 
-zsh_wifi_signal(){
-	local signal=$(nmcli -t device wifi | grep '^*' | awk -F':' '{print $6}')
-    local color="yellow"
-    [[ $signal -gt 75 ]] && color="green"
-    [[ $signal -lt 50 ]] && color="red"
-    echo -n "%F{$color}\uf1eb" # \uf1eb is 
-}
 
 export LANG="en_GB.utf8"
 export LC_ALL="en_GB.utf8"
@@ -31,14 +24,9 @@ zplug "zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zsh-history-substring-search"
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
 
-#zplug "zsh-users/zsh-completions",              defer:0
-#zplug "zsh-users/zsh-autosuggestions",          defer:2, on:"zsh-users/zsh-completions"
-#zplug "zsh-users/zsh-syntax-highlighting",      defer:3, on:"zsh-users/zsh-autosuggestions"
-#zplug "zsh-users/zsh-history-substring-search", defer:3, on:"zsh-users/zsh-syntax-highlighting"
 
 # oh-my-zsh
 zplug "zplug/zplug"
-#zplug "robbyrussell/oh-my-zsh", use:"lib/*.zsh"
 
 # Supports oh-my-zsh plugins and the like
 if [[ $OSTYPE = (linux)* ]]; then
@@ -401,3 +389,5 @@ export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
 autoload -U compinit && compinit
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+fortune bofh-excuses | cowsay | lolcat -
