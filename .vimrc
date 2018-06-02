@@ -25,7 +25,7 @@ Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'HerringtonDarkholme/yats.vim', { 'for': 'typescript' }
-Plug 'mhartington/nvim-typescript', { 'for': 'typescript' }
+Plug 'mhartington/nvim-typescript', { 'do': './install.sh' }
 Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': 'NERDTreeToggle' }
 Plug 'mhinz/vim-startify'
 Plug 'Valloric/YouCompleteMe'
@@ -136,7 +136,7 @@ set shiftwidth=4
 set expandtab
 
 " Language specific overrides
-autocmd FileType * set ts=2 shiftwidth=2 sts=2 et
+autocmd FileType typescript set ts=2 shiftwidth=2 sts=2 et
 
 vmap <C-c> "+yi
 vmap <C-x> "+c
