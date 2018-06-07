@@ -390,4 +390,4 @@ autoload -U compinit && compinit
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-fortune bofh-excuses | cowsay | lolcat -
+fortune bofh-excuses | cowthink | lolcat -
