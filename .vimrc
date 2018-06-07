@@ -29,6 +29,7 @@ Plug 'mhartington/nvim-typescript', { 'do': './install.sh' }
 Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': 'NERDTreeToggle' }
 Plug 'mhinz/vim-startify'
 Plug 'Valloric/YouCompleteMe'
+Plug 'chrisbra/Colorizer'
 
 " All of your Plugins must be added before the following line
 call plug#end()            " required
@@ -107,6 +108,7 @@ let g:tagbar_type_typescript = {
 
 nmap <F8> :TagbarToggle<CR>
 nmap <F9> :NERDTreeToggle<CR>
+nmap <F10> :ColorToggle<CR>
 
 map <C-Right> :bnext<CR>
 map <C-Left>  :bprevious<CR>
@@ -129,7 +131,7 @@ call neomake#configure#automake('w')
 let g:neomake_open_list = 2
 let g:neomake_python_enabled_makers = ['flake8']
 let g:neomake_javascript_enabled_makers = ['eslint']
-let g:neomake_rust_enabled_makers = ["rustc"]
+let g:neomake_rust_enabled_makers = ["cargo"]
 
 set tabstop=4
 set shiftwidth=4
