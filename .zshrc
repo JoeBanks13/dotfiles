@@ -367,13 +367,13 @@ setopt autocd
 setopt ignoreeof
 setopt menu_complete
 
+export PATH=/home/joseph/.asdf/installs/erlang/21.0-rc2/bin:$PATH
 . $HOME/.asdf/asdf.sh
 
 
 . $HOME/.asdf/completions/asdf.bash
 
 export PATH=$PATH:/home/joseph/go/bin:/home/joseph/.gem/ruby/2.5.0/bin
-source ~/.asdf/installs/erlang/20.2/activate
 source /etc/profile.d/vte.sh
 
 function acronym(){
