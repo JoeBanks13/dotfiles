@@ -1,55 +1,72 @@
+"
+"               NeoVim Configuration File
+"                  Authored by Joseph
+"
+set encoding=utf-8
 set nocompatible
-filetype off
 set signcolumn=yes
 " set the runtime path to include Vundle and initialize
 call plug#begin('~/.vim/plugged')
 
-Plug 'elixir-lang/vim-elixir', { 'for': 'elixir' }
+" Plugins for everywhere
 Plug 'vim-airline/vim-airline'
-Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'ryanoasis/vim-devicons'
 Plug 'wakatime/vim-wakatime'
 Plug 'aurieh/discord.nvim'
-Plug 'slashmili/alchemist.vim', { 'for': 'elixir' }
 Plug 'airblade/vim-gitgutter'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'PotatoesMaster/i3-vim-syntax', { 'for': 'i3' }
-Plug 'keith/swift.vim', { 'for': 'swift' }
 Plug 'majutsushi/tagbar'
-Plug 'racer-rust/vim-racer', { 'for': 'rust' }
-Plug 'junegunn/vim-github-dashboard', { 'on': ['GHA!', 'GHD!']}
 Plug 'joshdick/onedark.vim'
 Plug 'neomake/neomake'
 Plug 'sheerun/vim-polyglot'
-Plug 'rust-lang/rust.vim', { 'for': 'rust' }
-Plug 'ntpeters/vim-better-whitespace'
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-Plug 'HerringtonDarkholme/yats.vim', { 'for': 'typescript' }
-Plug 'mhartington/nvim-typescript', { 'do': './install.sh' }
-Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': 'NERDTreeToggle' }
 Plug 'mhinz/vim-startify'
 Plug 'Valloric/YouCompleteMe'
-Plug 'chrisbra/Colorizer'
+Plug 'ntpeters/vim-better-whitespace'
 
-" All of your Plugins must be added before the following line
-call plug#end()            " required
-filetype plugin indent on    " required
-set encoding=utf8
-set guifont=UbuntuMono\ Nerd\ Font\ 11
+" Load-on-command plugins
+Plug 'junegunn/vim-github-dashboard', { 'on': ['GHA!', 'GHD!']}
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': 'NERDTreeToggle' }
+
+" Elixir plugins
+Plug 'elixir-lang/vim-elixir', { 'for': 'elixir' }
+Plug 'slashmili/alchemist.vim', { 'for': 'elixir' }
+
+" i3 config plugins
+Plug 'PotatoesMaster/i3-vim-syntax', { 'for': 'i3' }
+
+" Rust plugins
+Plug 'racer-rust/vim-racer', { 'for': 'rust' }
+Plug 'rust-lang/rust.vim', { 'for': 'rust' }
+
+" TypeScript plugins
+Plug 'HerringtonDarkholme/yats.vim', { 'for': 'typescript' }
+Plug 'mhartington/nvim-typescript', { 'do': './install.sh', 'for': 'typescript' }
+
+" CSS/SCSS plugins
+Plug 'chrisbra/Colorizer', { 'for': ['css', 'sass', 'scss'] }
+
+" Python plugins
+Plug 'ehamberg/vim-cute-python', { 'for': 'python' }
+
+call plug#end()
+
+" Enable filetype
+filetype plugin indent on
+
 syntax on
+
+" Definitions
+
+" Enable powerline fonts
 let g:airline_powerline_fonts=1
-tnoremap <C-w>h <C-\><C-n><C-w>h
 
-tnoremap <C-w>j <C-\><C-n><C-w>j
-
-tnoremap <C-w>k <C-\><C-n><C-w>k
-
-tnoremap <C-w>l <C-\><C-n><C-w>l
-
+" Enable whitespace manager
 let g:better_whitespace_enabled=1
 let g:strip_whitespace_on_save=1
 
- let g:tagbar_type_rust = {
+" ctags tagbar integrations
+let g:tagbar_type_rust = {
     \ 'ctagstype' : 'rust',
     \ 'kinds' : [
         \'T:types,type definitions',
@@ -104,49 +121,62 @@ let g:tagbar_type_typescript = {
   \ ]
 \ }
 
+" YouCompleteMe config
+let g:ycm_server_python_interpreter = "/usr/bin/python2"
+let g:ycm_python_binary_path = '/usr/bin/python3.6'
 
-
-nmap <F8> :TagbarToggle<CR>
-nmap <F9> :NERDTreeToggle<CR>
-nmap <F10> :ColorToggle<CR>
-
-map <C-Right> :bnext<CR>
-map <C-Left>  :bprevious<CR>
-
-colorscheme onedark
-set noshowmode
-set incsearch
-set number
-set updatetime=100
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme='onedark'
-set hidden
-let g:racer_cmd = "/home/joseph/.cargo/bin/racer"
-let g:racer_experimental_completer = 1
-let g:rustfmt_autosave = 1
-" let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-" let &t_8b = "\<Esc>[38;2;%lu;%lu;%lum"
-
-call neomake#configure#automake('w')
+" Neomake configuration
 let g:neomake_open_list = 2
 let g:neomake_python_enabled_makers = ['flake8']
 let g:neomake_javascript_enabled_makers = ['eslint']
 let g:neomake_rust_enabled_makers = ["cargo"]
 
+" Racer configuration
+let g:racer_cmd = "/home/joseph/.cargo/bin/racer"
+let g:racer_experimental_completer = 1
+let g:rustfmt_autosave = 1
+
+" Airline configuration
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_theme='onedark'
+
+" Miscellaneous options
+set noshowmode
+set incsearch
+set number
+set updatetime=100
+set hidden
+
+" Set color scheme
+colorscheme onedark
+
+" Tab settings
 set tabstop=4
 set shiftwidth=4
 set expandtab
 
 " Language specific overrides
-autocmd FileType typescript set ts=2 shiftwidth=2 sts=2 et
+autocmd FileType typescript set ts=2 sw=2 sts=2 et
+autocmd FileType elixir set ts=2 sw=2 sts=2 et
 
-vmap <C-c> "+yi
-vmap <C-x> "+c
-vmap <C-v> c<ESC>"+p
-imap <C-v> <ESC>"+pa
+" Keymaps
 
-let g:ycm_server_python_interpreter = "/usr/bin/python2"
-let g:ycm_python_binary_path = '/usr/bin/python3.6'
+" Window moving
+tnoremap <C-w>h <C-\><C-n><C-w>h
+tnoremap <C-w>j <C-\><C-n><C-w>j
+tnoremap <C-w>k <C-\><C-n><C-w>k
+tnoremap <C-w>l <C-\><C-n><C-w>l
 
+" Tagbar, nerdtree & colorizer shortcuts
+nmap <F8> :TagbarToggle<CR>
+nmap <F9> :NERDTreeToggle<CR>
+nmap <F10> :ColorToggle<CR>
+
+" Move between buffers using CTRL+Left/Right
+map <C-Right> :bnext<CR>
+map <C-Left>  :bprevious<CR>
+
+call neomake#configure#automake('w')
+
+" Close neovim if nerdtree is the only open window
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-autocmd vimenter * wincmd l
