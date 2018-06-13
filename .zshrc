@@ -384,7 +384,7 @@ do grep \^$w /usr/share/dict/words | shuf | head -n1; done
 export PYTHONSTARTUP=~/.pythonrc
 export PATH=/bin:$PATH
 export PATH=~/flutter/bin:/home/joseph/node_modules/.bin:$PATH
-export PATH=~/fakebin:~/v8/depot_tools:$PATH
+export PATH=~/fakebin:~/.local/bin:$PATH
 export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
 autoload -U compinit && compinit
 
