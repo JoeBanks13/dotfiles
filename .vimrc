@@ -2,10 +2,8 @@
 "               NeoVim Configuration File
 "                  Authored by Joseph
 "
-set encoding=utf-8
-set nocompatible
-set signcolumn=yes
-" set the runtime path to include Vundle and initialize
+
+" Plugins {{{
 call plug#begin('~/.vim/plugged')
 
 " Plugins for everywhere
@@ -47,16 +45,13 @@ Plug 'mhartington/nvim-typescript', { 'do': './install.sh', 'for': 'typescript' 
 Plug 'chrisbra/Colorizer', { 'for': ['css', 'sass', 'scss'] }
 
 " Python plugins
-Plug 'ehamberg/vim-cute-python', { 'for': 'python' }
+" Plug 'ehamberg/vim-cute-python', { 'for': 'python', 'branch': 'moresymbols' }
+Plug 'tmhedberg/SimpylFold', { 'for': 'python' }
 
 call plug#end()
+" }}}
 
-" Enable filetype
-filetype plugin indent on
-
-syntax on
-
-" Definitions
+" Definitions {{{
 
 " Enable powerline fonts
 let g:airline_powerline_fonts=1
@@ -140,12 +135,25 @@ let g:rustfmt_autosave = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme='onedark'
 
-" Miscellaneous options
+" }}}
+
+" Configuration options {{{
+
+" Enable filetype
+filetype plugin indent on
+
+syntax conceal on
 set noshowmode
 set incsearch
 set number
+set relativenumber
 set updatetime=100
 set hidden
+set foldlevel=99
+set foldmethod=marker
+set encoding=utf-8
+set nocompatible
+set signcolumn=yes
 
 " Set color scheme
 colorscheme onedark
@@ -155,11 +163,13 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 
-" Language specific overrides
+" Language specific overrides {{{
 autocmd FileType typescript set ts=2 sw=2 sts=2 et
 autocmd FileType elixir set ts=2 sw=2 sts=2 et
+" }}}
+" }}}
 
-" Keymaps
+" Keymaps {{{
 
 " Window moving
 tnoremap <C-w>h <C-\><C-n><C-w>h
@@ -167,10 +177,12 @@ tnoremap <C-w>j <C-\><C-n><C-w>j
 tnoremap <C-w>k <C-\><C-n><C-w>k
 tnoremap <C-w>l <C-\><C-n><C-w>l
 
-" Tagbar, nerdtree & colorizer shortcuts
+" Line mode, tagbar, nerdtree, colorizer and folding shortcuts
+nmap <F7> :set relativenumber!<CR>
 nmap <F8> :TagbarToggle<CR>
 nmap <F9> :NERDTreeToggle<CR>
 nmap <F10> :ColorToggle<CR>
+nmap <space> za
 
 " Move between buffers using CTRL+Left/Right
 map <C-Right> :bnext<CR>
@@ -178,5 +190,10 @@ map <C-Left>  :bprevious<CR>
 
 call neomake#configure#automake('w')
 
+" }}}
+
+" Auto commands & highlighting {{{
+
 " Close neovim if nerdtree is the only open window
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+" }}}
