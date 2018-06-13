@@ -9,7 +9,7 @@ urgent_on_bell = true
 clickable_url = true
 scrollback_lines = 10000
 search_wrap = true
-font = ShureTechMono Nerd Font 9
+font = Source Code Pro 9
 cursor_blink = system
 
 cursor_shape = block
