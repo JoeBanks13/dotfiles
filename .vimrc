@@ -45,8 +45,11 @@ Plug 'mhartington/nvim-typescript', { 'do': './install.sh', 'for': 'typescript' 
 Plug 'chrisbra/Colorizer', { 'for': ['css', 'sass', 'scss'] }
 
 " Python plugins
-" Plug 'ehamberg/vim-cute-python', { 'for': 'python', 'branch': 'moresymbols' }
+Plug 'ehamberg/vim-cute-python', { 'for': 'python' }
 Plug 'tmhedberg/SimpylFold', { 'for': 'python' }
+
+" Python on LSD
+Plug 'akio/vim-hy', { 'for': 'hy' }
 
 call plug#end()
 " }}}
