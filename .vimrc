@@ -47,8 +47,6 @@ Plug 'chrisbra/Colorizer', { 'for': ['css', 'sass', 'scss'] }
 " Python plugins
 Plug 'ehamberg/vim-cute-python', { 'for': 'python', 'branch': 'moresymbols' }
 
-" Python on LSD
-Plug 'akio/vim-hy', { 'for': 'hy' }
 
 call plug#end()
 " }}}
