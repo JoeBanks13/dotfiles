@@ -45,8 +45,7 @@ Plug 'mhartington/nvim-typescript', { 'do': './install.sh', 'for': 'typescript' 
 Plug 'chrisbra/Colorizer', { 'for': ['css', 'sass', 'scss'] }
 
 " Python plugins
-Plug 'ehamberg/vim-cute-python', { 'for': 'python' }
-Plug 'tmhedberg/SimpylFold', { 'for': 'python' }
+Plug 'ehamberg/vim-cute-python', { 'for': 'python', 'branch': 'moresymbols' }
 
 
 call plug#end()
@@ -143,7 +142,7 @@ let g:airline_theme='onedark'
 " Enable filetype
 filetype plugin indent on
 
-syntax conceal on
+syntax on
 set noshowmode
 set incsearch
 set number
