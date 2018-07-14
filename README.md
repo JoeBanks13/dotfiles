@@ -1,2 +1,2 @@
 # dotfiles
-My linux dotfiles
+My linux dotfiles.
