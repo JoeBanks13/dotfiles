@@ -103,7 +103,7 @@ exec < ~/mouse_fix.sh
 new_window none
 
 # Set desktop background
-exec_always --no-startup-id /usr/bin/feh --bg-scale '/home/joseph/Pictures/firewatch.jpg'
+exec_always --no-startup-id /usr/bin/feh --bg-scale '/home/joseph/Pictures/rick.png'
 
 # Brightness keys
 bindsym XF86MonBrightnessUp exec xbacklight -inc 10 # increase screen brightness
