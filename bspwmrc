@@ -8,7 +8,7 @@ glava &
 
 xinput set-prop 11 "libinput Natural Scrolling Enabled" 1
 
-cd ~/Projects/Python/bar && pypy3 -m bar &
+cd ~/Projects/Python/bar && python3.7 -m bar &
 cd ~
 
 nitrogen --restore
@@ -22,5 +22,8 @@ bspc config split_ratio          0.52
 bspc config borderless_monocle   true
 bspc config gapless_monocle      true
 
+bspc config border_radius        5
+
 bspc rule -a "Discord Updater" state=floating
 bspc rule -a mplayer2 state=floating
+bspc rule -a albert state=floating border_width=0
