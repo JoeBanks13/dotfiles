@@ -86,7 +86,6 @@ syntax on
 set noshowmode
 set incsearch
 set number
-set relativenumber
 set updatetime=100
 set hidden
 set foldlevel=99
