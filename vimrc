@@ -6,8 +6,8 @@
 " Plugins {{{
 call plug#begin('~/.vim/plugged')
 
-" Colors
-Plug 'agreco/vim-citylights'
+" Themes
+Plug 'joshdick/onedark.vim'
 
 " Plugins for everywhere
 Plug 'itchyny/lightline.vim'
@@ -75,9 +75,8 @@ let g:lightline = {
       \ 'colorscheme': 'wombat',
       \ }
 
-
-" Colors
-colorscheme citylights
+" Color scheme
+colorscheme onedark
 
 " Enable filetype
 filetype plugin indent on
@@ -96,8 +95,6 @@ set signcolumn=yes
 
 " Italics
 let g:one_allow_italics = 1
-
-set termguicolors
 
 " Elixir config
 let g:mix_format_on_save = 1
