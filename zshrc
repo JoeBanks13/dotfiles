@@ -2,15 +2,12 @@ export LANGUAGE="en"
 fpath=( "$HOME/.zfunctions" $fpath )
   export ZSH=/Users/joseph/.oh-my-zsh
 
-export LANG="en_GB.utf8"
-export LC_ALL="en_GB.utf8"
-
 
 # Theme setup
 
+export ZSH_THEME="spaceship"
 
 
-export LESS="--tabs=4 --LONG-PROMPT --ignore-case --quit-if-one-screen --RAW-CONTROL-CHARS"
 # History
 HISTFILE=~/.zsh_history
 HISTSIZE=100000
@@ -124,7 +121,6 @@ unfunction setup_agents
 [[ -f ~/.zsh_aliases ]] && source ~/.zsh_aliases
 
 source $ZSH/oh-my-zsh.sh
-source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # aliases.exe
 
@@ -143,23 +139,17 @@ function acronym(){
 do grep \^$w /usr/share/dict/words | shuf | head -n1; done
 }
 
-export PYTHONSTARTUP=~/.pythonrc
-export PATH=/bin:$PATH
+export PATH=/bin:$HOME/.cargo/bin:$PATH
 export RUST_SRC_PATH="$(rustc --print sysroot)/lib/rustlib/src/rust/src"
 autoload -U compinit && compinit
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-task next
-
 setopt monitor
 
 export PIPENV_IGNORE_VIRTUALENVS=1
 
-autoload -U promptinit; promptinit
-prompt spaceship
 
-source ~/.prompt_order.zsh
 export PAGER=less
 
 # SSH Agent
