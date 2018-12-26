@@ -93,24 +93,6 @@ zstyle ":completion:*:default" list-colors ${(s.:.)LS_COLORS}
 
 export GPG_TTY=$(tty)
 
-# Load SSH and GPG agents via keychain.
-setup_agents() {
-  [[ $UID -eq 0 ]] && return
-
-  if which keychain &> /dev/null; then
-	local -a ssh_keys gpg_keys
-	for i in ~/.ssh/**/*pub; do test -f "$i(.N:r)" && ssh_keys+=("$i(.N:r)"); done
-	gpg_keys=$(gpg -K --with-colons 2>/dev/null | awk -F : '$1 == "sec" { print $5 }')
-    if (( $#ssh_keys > 0 )) || (( $#gpg_keys > 0 )); then
-	  alias run_agents='() { $(whence -p keychain) --quiet --eval --inherit any-once --agents ssh,gpg $ssh_keys ${(f)gpg_keys} }'
-	  #[[ -t ${fd:-0} || -p /dev/stdin ]] && eval `run_agents`
-	  unalias run_agents
-    fi
-  fi
-}
-
-setup_agents
-unfunction setup_agents
 
 
 [ -d "$HOME/bin" ] && export PATH="$HOME/bin:$PATH"
@@ -154,9 +136,8 @@ export PAGER=less
 
 # SSH Agent
 if [[ -z "$SSH_AGENT_PID" ]]; then
-    eval `ssh-agent`;
-    ssh-add /Users/joseph/ssh-keys/**/id_rsa;
-    ssh-add;
+    ssh-add -K /Users/joseph/ssh-keys/**/id_rsa;
+    ssh-add -K;
 fi;
 
 source ~/venv/bin/activate
