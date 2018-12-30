@@ -18,6 +18,9 @@ Plug 'airblade/vim-gitgutter'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'sheerun/vim-polyglot'
 
+" Bracket completion
+Plug 'jiangmiao/auto-pairs'
+
 " Linting & completion
 Plug 'w0rp/ale'
 
@@ -125,16 +128,6 @@ nmap <space> za
 " Move between buffers using CTRL+Left/Right
 map <C-Right> :bnext<CR>
 map <C-Left>  :bprevious<CR>
-
-" Automatic bracketing
-inoremap " ""<left>
-inoremap ' ''<left>
-inoremap ( ()<left>
-inoremap [ []<left>
-inoremap { {}<left>
-inoremap {<CR> {<CR>}<ESC>O
-inoremap {;<CR> {<CR>};<ESC>O
-
 
 " }}}
 
