@@ -126,6 +126,16 @@ nmap <space> za
 map <C-Right> :bnext<CR>
 map <C-Left>  :bprevious<CR>
 
+" Automatic bracketing
+inoremap " ""<left>
+inoremap ' ''<left>
+inoremap ( ()<left>
+inoremap [ []<left>
+inoremap { {}<left>
+inoremap {<CR> {<CR>}<ESC>O
+inoremap {;<CR> {<CR>};<ESC>O
+
+
 " }}}
 
 " Auto commands & highlighting {{{
